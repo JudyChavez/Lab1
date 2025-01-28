@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Profile Card</string>
+    <string name="my_name">Judy Chavez</string>
+    <string name="my_bio">Hello, my name is Judy. And this is my two sentence short biography introducing myself.</string>
+</resources>
