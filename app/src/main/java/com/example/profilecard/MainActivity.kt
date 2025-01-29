@@ -29,6 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -98,6 +99,7 @@ fun ProfileCardText(modifier: Modifier = Modifier) {
         lineHeight = 100.sp,
         fontWeight = FontWeight.Bold, //makes text bold
         color = androidx.compose.ui.graphics.Color.Blue,
+        textAlign = TextAlign.Center, //aligns text to center
         modifier = Modifier
             .align(alignment = Alignment.CenterHorizontally)
     )
@@ -106,7 +108,8 @@ fun ProfileCardText(modifier: Modifier = Modifier) {
         text = stringResource(R.string.my_bio),
         fontSize = 30.sp,
         lineHeight = 40.sp,
-        color = androidx.compose.ui.graphics.Color.Gray
+        color = androidx.compose.ui.graphics.Color.Gray,
+        textAlign = TextAlign.Center //aligns text to center
     )
     }
 }
