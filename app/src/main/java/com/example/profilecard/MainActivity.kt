@@ -1,4 +1,4 @@
-package com.example.profilecard
+package com.example.profilecard //name of our package
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -32,7 +32,7 @@ import com.example.profilecard.ui.theme.ProfileCardTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+        setContent { //skips parenthesis, since no parameters are used.
             ProfileCardTheme {
                 // A surface container using the 'background' color from the theme
                 val teal_200 = Color(0xFF03DAC5)
@@ -40,9 +40,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         //.background(color = androidx.compose.ui.graphics.Color.LightGray)
                         .fillMaxSize() //makes background fill entire screen.
-                        .padding(16.dp), //applies padding around entire layout.
-                    color = teal_200 //sets background color.
-                    //color = MaterialTheme.colorScheme.background
+                        .padding(16.dp), //applies padding (space inside container) around entire layout.
+                    color = teal_200, //sets background color.
+                    //color = MaterialTheme.colorScheme.background //original background.
+                    //color = Color.Green //built in way to add color.
                 ) {
                     ProfileCard() //calls function
                 }
@@ -57,7 +58,7 @@ fun ProfileCard(modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center, // centers content vertically on screen.
         horizontalAlignment = Alignment.CenterHorizontally, //centers content horizontally.
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize() //makes sure column fills entire screen (Surface) space. (not just children space).
     ) {
         ProfileCardImage() //calls function
@@ -72,7 +73,7 @@ fun ProfileCardImage(modifier: Modifier = Modifier) {
     Image(
         painter = image,
         contentDescription = "circular puppy image", // used for TalkBack, Google on screen reader.
-        modifier = Modifier
+        modifier = modifier
             .clip(CircleShape) // makes image round.
             .size(250.dp) // image size.
             .fillMaxWidth() // ensures image looks good on different screen sizes.
@@ -84,21 +85,22 @@ fun ProfileCardText(modifier: Modifier = Modifier) {
     //Column stack elements vertically.
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
     ) {
-    Text(
-        text = stringResource(R.string.my_name),
-        fontSize = 50.sp,
-        lineHeight = 100.sp,
-        fontWeight = FontWeight.Bold, //makes text bold
-        color = androidx.compose.ui.graphics.Color.Blue,
-        textAlign = TextAlign.Center, //aligns text to center
-        modifier = Modifier
-            .align(alignment = Alignment.CenterHorizontally)
-    )
-    Spacer(modifier = Modifier.height(8.dp)) //adds space between elements.
-    Text(
+        Text(
+            text = stringResource(R.string.my_name),
+            fontSize = 50.sp,
+            lineHeight = 100.sp,
+            fontWeight = FontWeight.Bold, //makes text bold
+            color = androidx.compose.ui.graphics.Color.Blue,
+            textAlign = TextAlign.Center, //aligns text to center
+            modifier = Modifier
+                .align(alignment = Alignment.CenterHorizontally)
+        )
+        //adds space between elements. .dp pixels per screen inch, adapts to screen size. (not hardcode size.)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
         text = stringResource(R.string.my_bio),
         fontSize = 30.sp,
         lineHeight = 40.sp,
@@ -110,6 +112,7 @@ fun ProfileCardText(modifier: Modifier = Modifier) {
 
 //for preview
 @Preview(showBackground = true)
+//@Composable, used for displaying, not needed for functions that don't display.
 @Composable
 fun GreetingPreview() {
     ProfileCardTheme {
